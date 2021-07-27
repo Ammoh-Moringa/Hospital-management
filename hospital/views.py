@@ -22,4 +22,11 @@ def registration(request):
         return redirect('login')
     else:
         form= SignUpForm()
-    return render(request, 'registration/registration_form.html', {"form":form}) 
+    return render(request, 'registration/registration_form.html', {"form":form})
+
+
+@login_required(login_url='/accounts/login/')
+def profile(request):
+
+    return render(request,'index.html')
+ 
