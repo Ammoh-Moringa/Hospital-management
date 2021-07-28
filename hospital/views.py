@@ -78,4 +78,7 @@ def patient(request, pk):
         'patient': patient
     }
     return render(request, 'patient.html', context)
+
+
+
  
