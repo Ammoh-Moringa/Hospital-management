@@ -1,4 +1,4 @@
-{% extends 'main/base.html' %}
+{% extends 'base.html' %}
 {% load static %}
  
     
@@ -43,7 +43,7 @@
                 {% for patient in patients %}
 
                 <tr class="mx-auto">
-                    <td scope="row"><h5>{{ patient.name }}</h5></td>
+                    <td scope="row"><h5>{{ patient.patient_name }}</h5></td>
                     <td><h5>{{ patient.bed_num }}</h5></td>
                     <td><h5>{{ patient.status }}</h5></td>
                     <td><a href="/patient/{{patient.id}}" class="btn btn-purple"><h5>Update</h5></a></td>
