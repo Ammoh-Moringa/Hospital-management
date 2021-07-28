@@ -1,3 +1,4 @@
+from hospital.filters import PatientFilter
 from hospital.models import Bed, Doctor, Patient
 from hospital.forms import SignUpForm
 from django.shortcuts import render, redirect
@@ -81,4 +82,62 @@ def patient(request, pk):
 
 
 
- 
+def add_patient(request):
+    beds = Bed.objects.filter(occupied=False)
+    doctors = Doctor.objects.all()
+    if request.method == "POST":
+        name = request.POST['name']
+        phone_num = request.POST['phone_num']
+        patient_relative_name = request.POST['patient_relative_name']
+        patient_relative_contact = request.POST['patient_relative_contact']
+        address = request.POST['address']
+        symptoms = request.POST['symptoms']
+        prior_ailments = request.POST['prior_ailments']
+        bed_num_sent = request.POST['bed_num']
+        bed_num = Bed.objects.get(bed_number=bed_num_sent)
+        dob = request.POST['dob']
+        status = request.POST['status']
+        doctor = request.POST['doctor']
+        doctor = Doctor.objects.get(name=doctor)
+        print(request.POST)
+        patient = Patient.objects.create(
+            patient_name= name,
+        phone_no = phone_num,
+        kin = patient_relative_name,
+        kin_phone_no= patient_relative_contact, 
+        address = address, 
+        SYMPTOMS = symptoms, 
+        prior_sickness = prior_ailments, 
+        bed_num = bed_num,
+        dob = dob, 
+        doctor=doctor,
+        status = status
+        )
+        patient.save()
+
+        bed = Bed.objects.get(bed_number=bed_num_sent)
+        bed.occupied = True
+        bed.save()
+        id = patient.id
+        return redirect(f"/patient/{id}")
+        
+    context = {
+        'beds': beds,
+        'doctors': doctors
+    }
+    return render(request, 'add-patient.html', context)
+
+def patient_list(request):
+    patients = Patient.objects.all()
+
+    # filtering
+    myFilter = PatientFilter(request.GET, queryset=patients)
+
+    patients = myFilter.qs
+    context = {
+        'patients': patients,
+        'myFilter': myFilter
+    }
+
+    return render(request, 'patient-list.html', context)
+
