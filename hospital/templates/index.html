@@ -1,4 +1,156 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
+{% load static %}
+{%load bootstrap4%}
+
+{% block contentTitle %}
+Home
+{% endblock contentTitle %}
+
 {% block content %}
-<h1>Covid-19 Hospital Management</h1>
-{% endblock %}
+<div class="container-fluid">
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Recover Card -->
+        <div class="col-xl-4 col-md-6 col-sm-12 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1"
+                                style="text-align:center">
+                                Recovered</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800" style="text-align:center">
+                                {{ recovered_count }}</div>
+                        </div>
+                        <div class="col-auto">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- admitted card -->
+        <div class="col-xl-4 col-md-6 col-sm-12 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1"
+                                style="text-align: center;">
+                                Admitted</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800" style="text-align:center">
+                                {{ patient_count }}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-stethoscope fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- dead Card  -->
+        <div class="col-xl-4 col-md-6 col-sm-12 mb-4">
+            <div class="card border-left-danger shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1"
+                                style="text-align: center">Deceased
+                            </div>
+                                <div class="col-auto text-center">
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{deceased_count}}</div>
+                                </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-book-dead fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pending Requests Card -->
+        <div class="col-xl-4 col-md-6 col-sm-12 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1"
+                                style="text-align: center">
+                                Pending Requests</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800" style="text-align: center">20</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- bed availability -->
+        <div class="col-xl-4 col-md-6 col-sm-12 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-blue text-uppercase mb-1"
+                                style="text-align: center">
+                                Bed availability</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800" style="text-align: center">
+                                {{beds_available}}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-bed fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-4 col-md-6 col-sm-12 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-blue text-uppercase mb-1"
+                                style="text-align: center">
+                                ventilator availability</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800" style="text-align:center">160</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-ambulance fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <h3 class="font-weight-bold my-3" style="text-align:center;">Available Beds</h3>
+    </div>
+    <div class="row">
+        <!-- .bg-success.grid-box.my-2.mx-2  -->
+        {% comment %} <div class="bg-success grid-box my-2 mx-2 py-3 px-3"> {% endcomment %}
+            {% comment %} </div> {% endcomment %}
+
+        {% for bed in beds %}
+        <div class="
+                
+                
+                {% if bed.occupied == True %}
+                bg-info 
+                {% elif bed.occupied == False %}
+                bg-success
+                {% endif %}
+                
+                
+                grid-box my-2 mx-2 py-3 px-3 text-white"><img src="https://img.icons8.com/wired/64/000000/hospital-bed.png"/>{{ bed }}</div>
+        {% endfor %}
+
+    </div>
+</div>
+
+{% endblock content %}
