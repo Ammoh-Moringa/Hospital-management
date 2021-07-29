@@ -48,7 +48,7 @@ def profile(request):
 
     return render(request,'index.html')
 
-
+@login_required(login_url='/accounts/login/')
 def patient(request, pk):
     patient = Patient.objects.get(id=pk)
     if request.method == "POST":
@@ -81,7 +81,7 @@ def patient(request, pk):
     return render(request, 'patient.html', context)
 
 
-
+@login_required(login_url='/accounts/login/')
 def add_patient(request):
     beds = Bed.objects.filter(occupied=False)
     doctors = Doctor.objects.all()
@@ -126,7 +126,7 @@ def add_patient(request):
         'doctors': doctors
     }
     return render(request, 'add-patient.html', context)
-
+@login_required(login_url='/accounts/login/')
 def patient_list(request):
     patients = Patient.objects.all()
 
