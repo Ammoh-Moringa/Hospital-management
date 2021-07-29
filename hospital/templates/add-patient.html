@@ -305,28 +305,29 @@ font-family: 'Special Elite', cursive;">
 
                             <option value={{ bed }}> {{ bed }}</option>
                             {% endfor %}</p>
-
+                    <br>
+                    <br>
+                    <br>
 
                 </div>
             </div>
-            <br>
-            <br>
-            <br>
             <div class="row">
                 <div class="form-field col-md-6">
                     <input type="date" id="dob" class="input-text" type="date" name="dob">
                 </div>
 
                 <div class="form-field col-md-6">
+                    <p>Status:</p>
                     <select class="input-text" name="status" id="status">
-                        <option class="bg-danger text-white" value="Critical">Critical</option>
-                        <option class="bg-warning text-white" value="Recovering">Recovering</option>
-                        <option class="bg-success text-white" value="Recovered">Recovered</option>
-                        <option class="bg-secondary text-white" value="Deceased">Deceased</option>
+                        <option class="bg-dark text-white" value="Critical">Critical</option>
+                        <option class="bg-dark text-white" value="Recovering">Recovering</option>
+                        <option class="bg-dark text-white" value="Recovered">Recovered</option>
+                        <option class="bg-dark text-white" value="Deceased">Deceased</option>
                     </select>
                 </div>
 
                 <div class="form-field col-md-6">
+                    <p>Doctor:</p>
                     <select class="input-text" name="doctor" id="doctor">
                         {% for doctor in doctors %}
                         <option class="" value="{{doctor}}">{{doctor}}</option>
