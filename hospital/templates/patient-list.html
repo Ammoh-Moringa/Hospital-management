@@ -16,13 +16,16 @@
      {% endcomment %}
 
     <!-- Topbar Search -->
-   <div class="table-responsive mt-3">
+   <div class="table-responsive mt-3"style=" background-image: url(https://images.unsplash.com/photo-1610457192573-46268b06fa8c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fHN1cmdpY2FsJTIwbWFza3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60);
+background-size: cover;
+background-repeat:  no-repeat;
+font-family: 'Special Elite', cursive;">
         <table class="table table-hover">
             <thead>
-                <th><h3>Name</h3></th>
-                <th><h3>Bed no</h3></th>
+                <th><h3>Patient's Name.</h3></th>
+                <th><h3>Bed no.</h3></th>
                 <th><h3>Status</h3></th>
-                <th><h3>Edit</h3></th>
+                <th><h3>Update</h3></th>
             </thead>
 
             <tbody>
@@ -32,7 +35,7 @@
                     <td scope="row"><h5>{{ patient.patient_name }}</h5></td>
                     <td><h5>{{ patient.bed_num }}</h5></td>
                     <td><h5>{{ patient.status }}</h5></td>
-                    <td><a href="/patient/{{patient.id}}" class="btn btn-purple"><h5>Update</h5></a></td>
+                    <td><a href="/patient/{{patient.id}}" class="btn btn-purple"><h5><img src="https://img.icons8.com/fluent/48/000000/approve-and-update.png"/></h5></a></td>
                 </tr>
     
                 {% endfor %}
