@@ -7,14 +7,17 @@ Home
 {% endblock contentTitle %}
 
 {% block content %}
-
-<div class="container-fluid" style=" background-image: url(https://images.unsplash.com/photo-1610457192573-46268b06fa8c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fHN1cmdpY2FsJTIwbWFza3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60);
+<body style=" background-image: url('https://images.unsplash.com/photo-1597440658768-f3ffdf64223c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjF8fGhvc3BpdGFsfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
 background-size: cover;
 background-repeat:  no-repeat;
 font-family: 'Special Elite', cursive;">
+
+<div class="container-fluid" >
  <div>
     <h3 class="font-weight-bold my-3" style="text-align:center;">Current Statistics</h3>
 </div>
+<br>
+<br>
     <div class="row">
         <div class="col-xl-6 col-md-6 col-sm-12 mb-4">
             <div class="card border-left-success shadow h-100 py-2">
@@ -89,10 +92,15 @@ font-family: 'Special Elite', cursive;">
 
 
     </div>
+    <br>
+    <br>
 
     <div>
         <h3 class="font-weight-bold my-3" style="text-align:center;">Total beds in the Facility</h3>
     </div>
+    <br>
+    <br>
+    <br>
     <div class="row">
         <!-- .bg-success.grid-box.my-2.mx-2  -->
         {% comment %} <div class="bg-success grid-box my-2 mx-2 py-3 px-3"> {% endcomment %}
@@ -116,5 +124,6 @@ font-family: 'Special Elite', cursive;">
     </div>
 
 </div>
+</body>
 
 {% endblock content %}

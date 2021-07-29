@@ -17,7 +17,6 @@
   width: 100%;
   height: 36px;
   border-width: 0 0 2px 0;
-  border-color: #6c19fcc2;
   font-size: 18px;
   line-height: 26px;
   font-weight: 400;
@@ -34,15 +33,12 @@
   font-size: 18px;
   line-height: 26px;
   font-weight: 400;
-  color: #5543ca;
   cursor: text;
   transition: all 0.4s;
 }
 
 .patient-form .submit-btn{
   display: inline-block;
-  background-image: linear-gradient(125deg, #a72879, #064497);
-  color: #ffffff;
   letter-spacing: 2px;
   font-size: 16px;
   padding: 8px 16px;
@@ -66,7 +62,6 @@ body{
 }
 
 .vertical-nav{
-    background: #3b82f6 !important;
     min-width: 17rem;
     height: 100vh;
     position: fixed;
@@ -100,9 +95,6 @@ body{
     text-transform: capitalize;
 }
 
-.nav-link:hover{
-    background: #5a01f5ee;
-}
 
 .text-primary{
     color: #fff !important;
@@ -125,9 +117,6 @@ body{
     }
 }
 
-.border-left-info{
-border-left: 0.25rem solid #36b9cc !important;
-}
 
 .border-left-warning{
 border-left: 0.25rem solid #f6c23e !important;
@@ -137,31 +126,15 @@ border-left: 0.25rem solid #f6c23e !important;
   border-left: 0.25rem solid #1cc88a !important;
 }
 
-.border-left-danger {
-  border-left: 0.25rem solid #e74a3b !important;
-}
 
-.text-gray-300 {
-  color: #54555c !important;
-}
-
-.border-left-primary  {
-  border-left: 0.25rem solid #4e73df !important;
-}
-
-.text-blue {
-    color:  #4e73df !important;
-}
 
 .btn-purple{
-    background: #6d19fc;
     color: #ffffff;  
     height: 2rem; 
     padding-top: 2px;
 }
 
 .btn-bed{
-    background: #6d19fc;
     color: #ffffff;  
     height: 2rem; 
     padding-top: 2px;
@@ -179,28 +152,24 @@ border-left: 0.25rem solid #f6c23e !important;
     margin-right: 0.5rem;
     border: none;
     outline: none;
-    border-bottom: 2px solid #4e73df;
 }
 
 #id_bed_num{
         margin-right: 0.5rem;
     border: none;
     outline: none;
-    border-bottom: 2px solid #4e73df;
 }
 
 #id_status{
     margin-right: 0.5rem;
     border: none;
     outline: none;
-    border-bottom: 2px solid #4e73df;
 }
 
 #id_doctor{
     margin-right: 0.5rem;
     border: none;
     outline: none;
-    border-bottom: 2px solid #4e73df;
 }
 
 /* patient.html  */
@@ -214,7 +183,6 @@ border-left: 0.25rem solid #f6c23e !important;
     width: 100%;
     /* height: 36px; */
     border-width: 0 0 2px 0;
-    border-color: #6c19fcc2;
     font-size: 18px;
     /* line-height: 26px; */
     font-weight: 400;
@@ -223,7 +191,6 @@ border-left: 0.25rem solid #f6c23e !important;
 
 .patient-form .input-text:focus{
     outline: none;
-    border-bottom-color: #d100b9;
 }
 
 .patient-form .label{
@@ -233,14 +200,12 @@ border-left: 0.25rem solid #f6c23e !important;
     font-size: 18px;
     line-height: 26px;
     font-weight: 400;
-    color: #5543ca;
     cursor: text;
     transition: all 0.4s;
 }
 
 .patient-form .submit-btn{
     display: inline-block;
-    background-image: linear-gradient(125deg, #a72879, #064497);
     color: #ffffff;
     letter-spacing: 2px;
     font-size: 16px;
@@ -255,7 +220,6 @@ border-left: 0.25rem solid #f6c23e !important;
     font-size: 23px;
     line-height: 1em;
     font-weight: 400;
-    color: #5543ca;
     cursor: text;
 }
 
@@ -267,7 +231,6 @@ border-left: 0.25rem solid #f6c23e !important;
     margin: 20px 0;
     font-size: 20px;
     font-weight: 300;
-    color: #5543ca;
     cursor: text;
 }
 
@@ -295,8 +258,12 @@ border-left: 0.25rem solid #f6c23e !important;
 }
 
 </style>
+<body style=" background-image: url('https://images.unsplash.com/photo-1597440658768-f3ffdf64223c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjF8fGhvc3BpdGFsfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
+background-size: cover;
+background-repeat:  no-repeat;
+font-family: 'Special Elite', cursive;">
 
-    <form action="" method="post">
+    <form action="" method="post" >
     {% csrf_token %}
         
         <div class="container" style="font-family: 'Special Elite', cursive;">
@@ -321,24 +288,29 @@ border-left: 0.25rem solid #f6c23e !important;
                     <div class="form-field col-md-12">
                         <input type="text" id="patient_relative_contact" class="input-text" type="text" name="address" placeholder="Address">
                     </div>
-
-                    <div class="form-field col-md-6" style="padding-bottom: 4px;">
-                        <input type="text" id="prior_ailments" class="form-control input-text mb-0 p-0 " style="outline:none" type="text" name="prior_ailments" placeholder="Prior ailments if any, eg: Diabetes, Thyroid">
-                    </div>
-
-                    <div class="form-field col-md-4 offset-md-2 mb-4 mx-auto" style="font-size: 16px;">
-                       
-                    <select name="bed_num"  id="bed_num">
+                    <p>Available beds:</p>
+                    <div class="form-field col-md-6">
+                        <select name="bed_num"  id="bed_num">
                      
-                    {% for bed in beds %}
+                            {% for bed in beds %}
+        
+                      <option value={{ bed }}> {{ bed }}</option>
+                            {% endfor %}
+                    </div>
+                    <br>
+                    <br>
 
-                    <p>Available beds:</p>  <option value={{ bed }}> {{ bed }}</option>
-                    {% endfor %}
+                    <div class="form-field col-md-6 offset-md-2 mb-4 mx-auto" >
+                       
+                    
                     </div>
                 </div>
                 
             </div>
+           
             <div class="row">
+                <br>
+                <br>
                 <div class="form-field col-md-6">
                     <input type="date" id="dob" class="input-text" type="date" name="dob">
                 </div>
@@ -445,4 +417,5 @@ border-left: 0.25rem solid #f6c23e !important;
         </div>
     </div>
     </form>
+    </body>
 {% endblock content %}

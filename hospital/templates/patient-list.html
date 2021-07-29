@@ -1,59 +1,76 @@
 {% extends 'base.html' %}
 {% load static %}
- 
-    
+
+
 
 {% block contentTitle %}
-    Patient List 
+Patient List
 
 
 {% endblock contentTitle %}
 
 {% block content %}
 
-    {% comment %} 1)name, 2)bed number, 3)status: critical, less crtical, recovering, recovered
-        4)edit option, will display modal that will contain, bed number will change to NA once recovered 
-     {% endcomment %}
+{% comment %} 1)name, 2)bed number, 3)status: critical, less crtical, recovering, recovered
+4)edit option, will display modal that will contain, bed number will change to NA once recovered
+{% endcomment %}
 
-    <!-- Topbar Search -->
-   <div class="table-responsive mt-3 container"style=" background-image: url(https://images.unsplash.com/photo-1610457192573-46268b06fa8c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fHN1cmdpY2FsJTIwbWFza3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60);
+<!-- Topbar Search -->
+<body style=" background-image: url('https://images.unsplash.com/photo-1597440658768-f3ffdf64223c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjF8fGhvc3BpdGFsfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
 background-size: cover;
 background-repeat:  no-repeat;
-font-family: 'Special Elite', cursive;
-margin-bottom:20px;">
-        <table class="table table-hover">
-            <thead>
-                <th><h3>Patient's Name.</h3></th>
-                <th><h3>Bed no.</h3></th>
-                <th><h3>Status</h3></th>
-                <th><h3>Update</h3></th>
-            </thead>
+font-family: 'Special Elite', cursive;">
+<div class="table-responsive mt-3 container">
+    <table class="table table-hover">
+        <thead>
+            <th>
+                <h3>Patient's Name.</h3>
+            </th>
+            <th>
+                <h3>Bed no.</h3>
+            </th>
+            <th>
+                <h3>Status</h3>
+            </th>
+            <th>
+                <h3>Update</h3>
+            </th>
+        </thead>
 
-            <tbody>
-                {% for patient in patients %}
+        <tbody>
+            {% for patient in patients %}
 
-                <tr class="mx-auto">
-                    <td scope="row"><h5 style="color:black; font-size: 16px;">{{ patient.patient_name }}</h5></td>
-                    <td><h5 style="color:black;font-size: 16px;">{{ patient.bed_num }}</h5></td>
-                    <td><h5 style="color:black;font-size: 16px;">{{ patient.status }}</h5></td>
-                    <td><a href="/patient/{{patient.id}}" class="btn btn-purple"><h5><img src="https://img.icons8.com/fluent/48/000000/approve-and-update.png"/></h5></a></td>
-                </tr>
-    
-                {% endfor %}
-                
-            </tbody>
-        </table>
-    
-    </div>
+            <tr class="mx-auto">
+                <td scope="row">
+                    <h5 style="color:black; font-size: 16px;">{{ patient.patient_name }}</h5>
+                </td>
+                <td>
+                    <h5 style="color:black;font-size: 16px;">{{ patient.bed_num }}</h5>
+                </td>
+                <td>
+                    <h5 style="color:black;font-size: 16px;">{{ patient.status }}</h5>
+                </td>
+                <td><a href="/patient/{{patient.id}}" class="btn btn-purple">
+                        <h5><img src="https://img.icons8.com/fluent/48/000000/approve-and-update.png" /></h5>
+                    </a></td>
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+</div>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-{% comment %} <script> 
-    $( function() {
-    
-    $( "#searchPatient" ).autocomplete({
-      source: '{% url "autocomplete" %}'
+{% comment %} <script>
+    $(function () {
+
+        $("#searchPatient").autocomplete({
+            source: '{% url "autocomplete" %}'
+        });
     });
-  } );
 </script>
+</body>
 {% endcomment %}
 {% endblock content %}
