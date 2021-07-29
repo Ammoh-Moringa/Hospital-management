@@ -2,277 +2,65 @@
 {% load static %}
 
 {% block contentTitle %}
-Add Patients
+    Add Patients
 {% endblock contentTitle %}
 
 {% block content %}
-<style>
-    .patient-form .form-field {
-        position: relative;
-        margin: 32px 0;
-    }
+<style>.patient-form .form-field{
+    position: relative;
+    margin: 32px 0;
+}
 
-    .patient-form .input-text {
-        display: block;
-        width: 100%;
-        height: 36px;
-        border-width: 0 0 2px 0;
-        font-size: 18px;
-        line-height: 26px;
-        font-weight: 400;
-    }
+.patient-form .input-text{
+    display: block;
+    width: 100%;
+    height: 36px;
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 400;
+}
 
-    .patient-form .input-text:focus {
-        outline: none;
-    }
+.patient-form .input-text:focus{
+    outline: none;
+}
 
-    .patient-form .label {
-        position: absolute;
-        left: 20px;
-        bottom: 11px;
-        font-size: 18px;
-        line-height: 26px;
-        font-weight: 400;
-        cursor: text;
-        transition: all 0.4s;
-    }
+.patient-form .label{
+    position: absolute;
+    left: 20px;
+    bottom: 11px;
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 400;
+    cursor: text;
+    transition: all 0.4s;
+}
 
-    .patient-form .submit-btn {
-        display: inline-block;
-        letter-spacing: 2px;
-        font-size: 16px;
-        padding: 8px 16px;
-        border: none;
-        width: 200px;
-        cursor: pointer;
-    }
+.patient-form .submit-btn{
+    display: inline-block;
+    color: #ffffff;
+    letter-spacing: 2px;
+    font-size: 16px;
+    padding: 8px 16px;
+    border: none;
+    width: 200px;
+    cursor: pointer;
+}
 
-    .patient-form .input-text:focus+.label,
-    .patient-form .input-text.not-empty+.label {
-        transform: translateY(-24px);
-        font-size: 2px;
-
-
-    }
-
-    body {
-        background: #fffefe;
-        min-height: 100vh;
-        overflow-x: hidden;
-        font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    }
-
-    .vertical-nav {
-        min-width: 17rem;
-        height: 100vh;
-        position: fixed;
-        top: 0;
-        left: 0;
-        box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
-        transition: all 0.4s;
-    }
-
-    .page-content {
-        width: calc(100% -17rem);
-        /*same as vertical nav width*/
-        margin-left: 17rem;
-        transition: all 0.4s;
-    }
-
-    #sidebar.active {
-        margin-left: -17rem;
-    }
-
-    #content.active {
-        width: 100%;
-        margin: 0;
-    }
-
-    .seperator {
-        margin: 3rem 0;
-        border-bottom: 1px dashed #000000;
-    }
-
-    .nav-link {
-        text-transform: capitalize;
-    }
-
-
-    .text-primary {
-        color: #fff !important;
-    }
-
-    @media (max-width: 768px) {
-        #sidebar {
-            margin-left: -17rem;
-        }
-
-        #sidebar.active {
-            margin-left: 0;
-        }
-
-        #content {
-            width: 100%;
-            margin: 0;
-        }
-
-        #content.active {
-            margin-left: 17rem;
-            width: calc(100% - 17rem);
-        }
-    }
-
-
-    .border-left-warning {
-        border-left: 0.25rem solid #f6c23e !important;
-    }
-
-    .border-left-success {
-        border-left: 0.25rem solid #1cc88a !important;
-    }
-
-
-
-    .btn-purple {
-        color: #ffffff;
-        height: 2rem;
-        padding-top: 2px;
-    }
-
-    .btn-bed {
-        color: #ffffff;
-        height: 2rem;
-        padding-top: 2px;
-        margin-bottom: 2em;
-    }
-
-    .bed {
-        padding-bottom: 2em;
-    }
-
-    .btn-purple:hover {
-        color: white;
-    }
-
-    #id_name {
-        margin-right: 0.5rem;
-        border: none;
-        outline: none;
-    }
-
-    #id_bed_num {
-        margin-right: 0.5rem;
-        border: none;
-        outline: none;
-    }
-
-    #id_status {
-        margin-right: 0.5rem;
-        border: none;
-        outline: none;
-    }
-
-    #id_doctor {
-        margin-right: 0.5rem;
-        border: none;
-        outline: none;
-    }
-
-    /* patient.html  */
-    .patient-form .form-field {
-        /* position: relative; */
-        margin: 32px 0;
-    }
-
-    .patient-form .input-text {
-        /* display: block; */
-        width: 100%;
-        /* height: 36px; */
-        border-width: 0 0 2px 0;
-        font-size: 18px;
-        /* line-height: 26px; */
-        font-weight: 400;
-        transition: border-color 0.2s linear;
-    }
-
-    .patient-form .input-text:focus {
-        outline: none;
-    }
-
-    .patient-form .label {
-        position: absolute;
-        left: 20px;
-        bottom: 11px;
-        font-size: 18px;
-        line-height: 26px;
-        font-weight: 400;
-        cursor: text;
-        transition: all 0.4s;
-    }
-
-    .patient-form .submit-btn {
-        display: inline-block;
-        color: #ffffff;
-        letter-spacing: 2px;
-        font-size: 16px;
-        padding: 8px 16px;
-        border: none;
-        width: 200px;
-        cursor: pointer;
-    }
-
-    .symptoms-label {
-        margin: 50px 0 0px 0;
-        font-size: 23px;
-        line-height: 1em;
-        font-weight: 400;
-        cursor: text;
-    }
-
-    .symptoms {
-        margin: 0px 0;
-    }
-
-    .symptoms .symptom-type {
-        margin: 20px 0;
-        font-size: 20px;
-        font-weight: 300;
-        cursor: text;
-    }
-
-    .symptoms .symptom {
-        display: flex;
-        align-items: center;
-        justify-content: start;
-    }
-
-    .symptoms .symptom>input {
-        width: 20px;
-        height: 20px;
-        margin: 10px 10px;
-    }
-
-    .symptoms .symptom>label {
-        margin: 10px 0;
-        text-align: center;
-    }
-
-    /* -------------- */
-    /* grid box style */
-    .grid-box {
-        border-radius: 1px;
-    }
-</style>
-
+.patient-form .input-text:focus + .label,
+.patient-form .input-text.not-empty + .label{
+    transform: translateY(-24px);
+    font-size: 2px;
+}</style>
 <body style=" background-image: url('https://images.unsplash.com/photo-1597440658768-f3ffdf64223c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjF8fGhvc3BpdGFsfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
 background-size: cover;
 background-repeat:  no-repeat;
 font-family: 'Special Elite', cursive;">
 
-    <form action="" method="post">
-        {% csrf_token %}
 
-        <div class="container" style="font-family: 'Special Elite', cursive;">
+    <form action="" method="post">
+    {% csrf_token %}
+        
+        <div class="container">
             <div class="patient-form ">
                 <div class="row">
                     <div class="form-field col-md-6">
@@ -280,57 +68,55 @@ font-family: 'Special Elite', cursive;">
                     </div>
 
                     <div class="form-field col-md-6">
-                        <input type="text" id="phone_num" class="input-text" type="text" name="phone_num"
-                            placeholder="Phone no.">
+                        <input type="text" id="phone_num" class="input-text" type="text" name="phone_num" placeholder="Phone no.">
                     </div>
 
                     <div class="form-field col-md-6">
-                        <input type="text" id="patient_relative_name" class="input-text" type="text"
-                            name="patient_relative_name" placeholder="Relative's name">
+                        <input type="text" id="patient_relative_name" class="input-text" type="text" name="patient_relative_name" placeholder="Relative's name">
                     </div>
 
                     <div class="form-field col-md-6">
-                        <input type="text" id="patient_relative_contact" class="input-text" type="text"
-                            name="patient_relative_contact" placeholder="Relative's contact">
+                        <input type="text" id="patient_relative_contact" class="input-text" type="text" name="patient_relative_contact" placeholder="Relative's contact">
                     </div>
 
                     <div class="form-field col-md-12">
-                        <input type="text" id="patient_relative_contact" class="input-text" type="text" name="address"
-                            placeholder="Address">
+                        <input type="text" id="patient_relative_contact" class="input-text" type="text" name="address" placeholder="Address">
                     </div>
-                    <p>Available beds:
-                        <select name="bed_num" id="bed_num">
 
-                            {% for bed in beds %}
+                    <div class="form-field col-md-6" style="padding-bottom: 4px;">
+                        <input type="text" id="prior_ailments" class="form-control input-text mb-0 p-0 " style="outline:none" type="text" name="prior_ailments" placeholder="Prior ailments if any, eg: Diabetes, Thyroid">
+                    </div>
 
-                            <option value={{ bed }}> {{ bed }}</option>
-                            {% endfor %}</p>
-                    <br>
-                    <br>
-                    <br>
-
+                    <div class="form-field col-md-4 offset-md-2 mb-4 mx-auto">
+                       <h4>Enter bed no and Date:</h4> 
+                    <select name="bed_num" class="btn btn-bed" id="bed_num">
+                    {% for bed in beds %}
+                        <option value={{ bed }}>{{ bed }}</option>
+                    {% endfor %}
+                    </div>
                 </div>
+                
             </div>
             <div class="row">
                 <div class="form-field col-md-6">
+                   
                     <input type="date" id="dob" class="input-text" type="date" name="dob">
                 </div>
-
                 <div class="form-field col-md-6">
-                    <p>Status:</p>
-                    <select class="input-text" name="status" id="status">
+                    <h3>Status:</h3>
+                    <select class="input-text"  name="status" id="status">
                         <option class="bg-dark text-white" value="Critical">Critical</option>
                         <option class="bg-dark text-white" value="Recovering">Recovering</option>
                         <option class="bg-dark text-white" value="Recovered">Recovered</option>
                         <option class="bg-dark text-white" value="Deceased">Deceased</option>
                     </select>
                 </div>
-
+                
                 <div class="form-field col-md-6">
-                    <p>Doctor:</p>
-                    <select class="input-text" name="doctor" id="doctor">
+                    <h3>Doctor's Name:</h3>
+                    <select class="input-text"  name="doctor" id="doctor">
                         {% for doctor in doctors %}
-                        <option class="" value="{{doctor}}">{{doctor}}</option>
+                            <option class="" value="{{doctor}}">{{doctor}}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -338,93 +124,81 @@ font-family: 'Special Elite', cursive;">
 
             </div>
 
-            {{doctor}}
-            <!-- symptons field -->
+{{doctor}}
             <div class="patient-form row d-flex">
                 <div class="symptoms row">
-                    <div class="symptoms-label col-12 text-center mt-0"
-                        style="font-size: 20px;font-weight:bold;text-align: center">Symptoms</div>
-
-                    <!-- <div class="row"> -->
+                <div class="symptoms-label col-12 text-center mt-0"><h1>Symptoms</h1></div><br><br>
+            
                     <div class="common-symptoms col-md-4">
-                        <label for="" class="symptom-type">Common</label><br>
+                       <h3><label for="" class="symptom-type">Common</label></h3><br>
 
                         <div class="symptom">
-                            <input type="checkbox" name="symptoms" id="fever" value="Fever" class="checkbox">
-                            <label for="fever">Fever</label><br>
+                        <input type="checkbox" name="symptoms" id="fever" value="Fever" class="checkbox">
+                        <label for="fever">Cough</label>
                         </div>
                         <div class="symptom">
-                            <input type="checkbox" name="symptoms" value="Dry Cough" id="dry_cough">
-                            <label for="">Dry cough</label><br>
+                        <input type="checkbox" name="symptoms" value="Dry Cough" id="dry_cough">
+                        <label for="">Feeling tired</label><br>
                         </div>
                         <div class="symptom">
-                            <input type="checkbox" name="symptoms" value="Tiredness" id="tiredness">
-                            <label for="">Tiredness</label><br>
+                        <input type="checkbox" name="symptoms" value="Tiredness" id="tiredness">
+                        <label for="">slight fever</label><br>
                         </div>
                     </div>
-
+                
                     <div class="less-common-symptoms col-md-4">
-                        <div>
-                            <label for="" class="symptom-type">Less Common</label><br>
+                    <div>
+                        <h3><label for="" class="symptom-type">Less Common</label></h3><br>
+                        
+                        <div class="symptom">
+                        <input type="checkbox" name="symptoms" value="Aches and pains" id="aches_and_pain">
+                        <label for="">body aches</label><br>
+                        </div>
+        
+                        <div class="symptom">
+                        <input type="checkbox" name="symptoms" value="Sore Throat" id="sore_throat">
+                        <label for="">loss of test and smell</label><br>
+                        </div>
 
-                            <div class="symptom">
-                                <input type="checkbox" name="symptoms" value="Aches and pains" id="aches_and_pain">
-                                <label for="">Aches and pains</label><br>
-                            </div>
+                        <div class="symptom">
+                        <input type="checkbox" name="symptoms" valu="Diarrhoea" id="diarrhoea">
+                        <label for="">Diarrhoea</label><br>
+                        </div>
 
-                            <div class="symptom">
-                                <input type="checkbox" name="symptoms" value="Sore Throat" id="sore_throat">
-                                <label for="">Sore throat</label><br>
-                            </div>
-
-                            <div class="symptom">
-                                <input type="checkbox" name="symptoms" valu="Diarrhoea" id="diarrhoea">
-                                <label for="">Diarrhoea</label><br>
-                            </div>
-
-                            <div class="symptom">
-                                <input type="checkbox" name="symptoms" value="Loss of taste or smell"
-                                    id="loss_of_taste_or_smell">
-                                <label for="">Loss of taste or smell</label><br>
-                            </div>
+                        <div class="symptom">
+                        <input type="checkbox" name="symptoms" value="Loss of taste or smell" id="loss_of_taste_or_smell">
+                        <label for="">Throat pain</label><br>
                         </div>
                     </div>
-
+                    </div>
+                    
                     <div class="serious-symptoms col-md-4">
-                        <label for="" class="symptom-type">Serious</label><br>
-
+                        <h3><label for="" class="symptom-type">Serious</label></h3><br>
+        
                         <div class="symptom">
-                            <input type="checkbox" name="symptoms"
-                                value="Difficulty in breathing or shortness of breath"
-                                id="difficulty_in_breathing_or_shortness_of_breath">
-                            <label for="">Difficulty in breathing or shortness of breath</label><br>
+                        <input type="checkbox" name="symptoms" value="Difficulty in breathing or shortness of breath" id="difficulty_in_breathing_or_shortness_of_breath">
+                        <label for="">Chest pains</label><br>
                         </div>
                         <div class="symptom">
-                            <input type="checkbox" name="symptoms" value="Chest pain or pressure"
-                                id="chest_pain_or_pressure">
-                            <label for="">Chest pain or pressure</label><br>
+                        <input type="checkbox" name="symptoms" value="Chest pain or pressure" id="chest_pain_or_pressure">
+                        <label for="">Loss of speech or movement</label><br>
                         </div>
                         <div class="symptom">
-                            <input type="checkbox" name="symptoms" value="Loss Of Speech Or Movement"
-                                id="loss_of_speech_or_movement">
-                            <label for="">Loss of speech or movement</label><br>
+                        <input type="checkbox" name="symptoms" value="Loss Of Speech Or Movement" id="loss_of_speech_or_movement">
+                        <label for="">Difficulty in breathing or shortness of breath</label><br>
                         </div>
-                    </div>
-
-
-                    <!-- </div> -->
-                </div>
+                    </div>  
             </div>
-
+            </div>
+            
         </div>
 
-        <div style="margin-left: 400px;">
-            <button class="btn col-lg-4 btn-block mx-auto btn-success mb-4">Add Patient</button>
         </div>
         </div>
-        </div>
-        </div>
-        </div>
+    </div>
+    <div style="margin-left: 450px;">
+        <button class="btn col-lg-4 btn-block mx-auto btn-success mb-4" >Add Patient</button>
+    </div>
     </form>
 </body>
 {% endblock content %}
